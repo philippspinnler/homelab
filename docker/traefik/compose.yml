@@ -4,7 +4,7 @@ services:
     restart: unless-stopped
     container_name: traefik
     command:
-      --providers.file.filename=/config/traefik_not_existing.yml
+      --providers.file.filename=/config/traefik.yml
     ports:
       - "80:80"
       - "443:443"
