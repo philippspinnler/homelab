@@ -4,15 +4,14 @@ services:
     restart: unless-stopped
     container_name: traefik
     command:
-      --providers.file.filename=/traefik.yml
+      --providers.file.filename=/config/traefik.yml
     ports:
       - "80:80"
       - "443:443"
       - "8080:8080"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - traefik:/traefik.yml
-      - file_provider:/file-provider.yml
+      - config:/config
       - letsencrypt:/letsencrypt
     networks:
       - traefik
@@ -23,16 +22,11 @@ services:
       - host.docker.internal:172.24.0.1
 
 volumes:
-  traefik:
+  config:
     driver_opts:
       type: "nfs"
       o: "addr=10.0.86.11,nfsvers=4"
-      device: ":/volume6/docker/traefik/traefik.yml"
-  file_provider:
-    driver_opts:
-      type: "nfs"
-      o: "addr=10.0.86.11,nfsvers=4"
-      device: ":/volume6/docker/traefik/file-provider.yml"
+      device: ":/volume6/docker/traefik/config"
   letsencrypt:
     driver_opts:
       type: "nfs"
