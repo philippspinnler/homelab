@@ -1,0 +1,36 @@
+services:
+  pihole:
+    container_name: pihole
+    image: pihole/pihole:latest
+    network_mode: "host"
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "8888:8888/tcp"
+    environment:
+      TZ: 'Europe/Zurich'
+      # WEBPASSWORD: {password}
+      WEB_PORT: 8888
+    volumes:
+      - pihole:/etc/pihole
+      - dnsmasq:/etc/dnsmasq.d
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.pihole.rule=Host(`pihole.monphi.ch`)"
+      - "traefik.http.services.pihole.loadbalancer.server.port=8888"
+      - "traefik.http.middlewares.add-admin.addprefix.prefix=/admin"
+      - "traefik.http.routers.pihole.middlewares=add-admin"
+
+volumes:
+  pihole:
+    driver_opts:
+      type: "nfs"
+      o: "addr=10.0.86.11,nfsvers=4"
+      device: ":/volume6/docker/pihole/pihole"
+
+  dnsmasq:
+    driver_opts:
+      type: "nfs"
+      o: "addr=10.0.86.11,nfsvers=4"
+      device: ":/volume6/docker/pihole/dnsmasq"
