@@ -33,4 +33,4 @@ volumes:
     driver_opts:
       type: "nfs"
       o: "addr=10.0.86.11,nfsvers=4"
-      device: ":/volume6/docker/pihole/dnsmasq"
+      device: ":/volume6/docker/pihole/dnsmasq.d"
