@@ -4,7 +4,7 @@ services:
     container_name: cloudflared
     restart: unless-stopped
     network_mode: "host"
-    command: tunnel --no-autoupdate run
+    command: tunnel run
     # environment:
     #   - "TUNNEL_TOKEN={token}"
     
