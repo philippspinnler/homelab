@@ -15,9 +15,9 @@ services:
       - letsencrypt:/letsencrypt
     networks:
       - traefik
-    # environment:
-    #   - CLOUDFLARE_EMAIL={cloudflare_email}
-    #   - CLOUDFLARE_API_KEY={cloudflare_api_key}
+    environment:
+      - CLOUDFLARE_EMAIL=${CLOUDFLARE_EMAIL}
+      - CLOUDFLARE_API_KEY=${CLOUDFLARE_API_KEY}
     extra_hosts:
       - host.docker.internal:172.23.0.1
 

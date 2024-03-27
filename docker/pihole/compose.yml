@@ -9,7 +9,7 @@ services:
       - "8888:8888/tcp"
     environment:
       TZ: 'Europe/Zurich'
-      # WEBPASSWORD: {password}
+      WEBPASSWORD: ${WEBPASSWORD}
       WEB_PORT: 8888
     volumes:
       - pihole:/etc/pihole
