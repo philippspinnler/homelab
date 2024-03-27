@@ -18,8 +18,8 @@ services:
     environment:
       - CLOUDFLARE_EMAIL=${CLOUDFLARE_EMAIL}
       - CLOUDFLARE_API_KEY=${CLOUDFLARE_API_KEY}
-    extra_hosts:
-      - host.docker.internal:172.23.0.1
+    #extra_hosts:
+    #  - host.docker.internal:172.23.0.1
 
 volumes:
   config:
