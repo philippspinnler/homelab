@@ -1,0 +1,20 @@
+services:
+  homeassistant:
+    container_name: home-assistant
+    image: "ghcr.io/home-assistant/home-assistant:stable"
+    volumes:
+      - home-assistant-config:/config
+    restart: unless-stopped
+    privileged: true
+    network_mode: host
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.pihole.rule=Host(`home-assistant.monphi.ch`)"
+      - "traefik.http.services.pihole.loadbalancer.server.port=8123"
+
+volumes:
+  home-assistant-config:
+    driver_opts:
+      type: "nfs"
+      o: "addr=10.0.86.11,nfsvers=4"
+      device: ":/volume6/docker/home-assistant/config"
