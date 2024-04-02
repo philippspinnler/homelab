@@ -7,6 +7,13 @@ services:
     volumes:
       - config:/app/config
       - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
+    networks:
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.jellyfin.rule=Host(`homepage.monphi.ch`)" 
+      - "traefik.http.services.jellyfin.loadbalancer.server.port=3000" 
 
 volumes:
   config:
@@ -14,3 +21,7 @@ volumes:
       type: "nfs"
       o: "addr=10.0.86.11,nfsvers=4"
       device: ":/volume6/docker/homepage/config"
+
+networks:
+  traefik:
+    external: true
