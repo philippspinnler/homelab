@@ -3,7 +3,7 @@ services:
         image: lscr.io/linuxserver/speedtest-tracker:latest
         container_name: speedtest-tracker
         ports:
-            - 8080:8088
+            - 8088:80
         environment:
             - DB_CONNECTION=sqlite
         volumes:
