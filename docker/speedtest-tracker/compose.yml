@@ -1,0 +1,28 @@
+services:
+    speedtest-tracker:
+        image: lscr.io/linuxserver/speedtest-tracker:latest
+        container_name: speedtest-tracker
+        ports:
+            - 8080:8088
+        environment:
+            - DB_CONNECTION=sqlite
+        volumes:
+            - config:/config
+        restart: unless-stopped
+        networks:
+          - traefik
+        labels:
+          - "traefik.enable=true"
+          - "traefik.http.routers.jellyfin.rule=Host(`speedtest-tracker.monphi.ch`)" 
+          - "traefik.http.services.jellyfin.loadbalancer.server.port=8080"
+
+volumes:
+  config:
+    driver_opts:
+      type: "nfs"
+      o: "addr=10.0.86.11,nfsvers=4"
+      device: ":/volume6/docker/speedtest-tracker/config"
+
+networks:
+  traefik:
+    external: true
