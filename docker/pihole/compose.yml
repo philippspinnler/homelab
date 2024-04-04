@@ -19,8 +19,6 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.pihole.rule=Host(`pihole.monphi.ch`)"
       - "traefik.http.services.pihole.loadbalancer.server.port=8888"
-      - "traefik.http.middlewares.add-admin.addprefix.prefix=/admin"
-      - "traefik.http.routers.pihole.middlewares=add-admin"
 
 volumes:
   pihole:
