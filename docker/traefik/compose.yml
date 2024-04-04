@@ -2,27 +2,6 @@ services:
   traefik:
     image: "traefik:v2.11"
     container_name: "traefik"
-    command:
-      # general
-      # - "--log.level=DEBUG"
-      - "--global.checkNewVersion=true"
-      - "--global.sendAnonymousUsage=false"
-      - "--api.insecure=true"
-      - "--api.dashboard=true"
-      # docker provider
-      - "--providers.docker=true"
-      - "--providers.docker.exposedbydefault=false"
-      - "--entrypoints.web.address=:80"
-      - "--entrypoints.web.http.redirections.entryPoint.to=https"
-      - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
-      - "--entrypoints.tlsweb.address=:443"
-      - "--entrypoints.tlsweb.http.tls.certResolver=le"
-      - "--certificatesResolvers.le.acme.dnsChallenge.provider=cloudflare"
-      - "--certificatesResolvers.le.acme.email=${CLOUDFLARE_EMAIL}"
-      - "--certificatesResolvers.le.acme.storage=/letsencrypt/acme.json"
-      - "--serversTransport.insecureSkipVerify=true"
-      # file provider
-      - "--providers.file.filename=/config/file-provider.yml"
     ports:
       - 80:80
       - 443:443
@@ -30,7 +9,7 @@ services:
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
       - "letsencrypt:/letsencrypt"
-      - "config:/config"
+      - "config:/etc/traefik"
     networks:
       - traefik
     environment:
