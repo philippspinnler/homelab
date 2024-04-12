@@ -17,6 +17,7 @@ services:
       - CLOUDFLARE_API_KEY=${CLOUDFLARE_API_KEY}
     extra_hosts:
       - host.docker.internal:${DOCKER_HOST_IP}
+    restart: unless-stopped
 
 volumes:
   letsencrypt:

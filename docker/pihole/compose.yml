@@ -15,10 +15,6 @@ services:
       - pihole:/etc/pihole
       - dnsmasq:/etc/dnsmasq.d
     restart: unless-stopped
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.pihole.rule=Host(`pihole.monphi.ch`)"
-      - "traefik.http.services.pihole.loadbalancer.server.port=8888"
 
 volumes:
   pihole:
