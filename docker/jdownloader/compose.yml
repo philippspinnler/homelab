@@ -1,0 +1,30 @@
+services:
+  jdownloader-2:
+    image: jlesage/jdownloader-2
+    ports:
+      - "5800:5800"
+    volumes:
+      - config:/config
+      - downloads:/output
+    networks:
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.jdownloader.rule=Host(`jdownloader.monphi.ch`)" 
+      - "traefik.http.services.jdownloader.loadbalancer.server.port=5800" 
+
+volumes:
+  config:
+    driver_opts:
+      type: "nfs"
+      o: "addr=10.0.86.11,nfsvers=4"
+      device: ":/volume6/docker/jdownloader/config"
+  downloads:
+    driver_opts:
+      type: "nfs"
+      o: "addr=10.0.86.11,nfsvers=4"
+      device: ":/volume3/Movies/downloads"
+
+networks:
+  traefik:
+    external: true
