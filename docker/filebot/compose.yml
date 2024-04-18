@@ -2,8 +2,6 @@ services:
   filebot:
     image: jlesage/filebot
     container_name: filebot
-    ports:
-      - 5802:5800
     environment:
       - USER_ID=0
       - GROUP_ID=0
