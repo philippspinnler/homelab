@@ -4,6 +4,9 @@ services:
     container_name: jdownloader
     ports:
       - "5800:5800"
+    environment:
+      - USER_ID=0
+      - GROUP_ID=0
     volumes:
       - config:/config
       - downloads:/output
