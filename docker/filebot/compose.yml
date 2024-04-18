@@ -17,6 +17,7 @@ services:
       - AMC_PROCESS_MUSIC=n
       - AMC_INPUT_DIR=/storage
       - AMC_OUTPUT_DIR=/
+      - AMC_INTERVAL=300
     volumes:
       - config:/config
       - downloads:/storage
