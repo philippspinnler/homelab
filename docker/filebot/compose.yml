@@ -10,7 +10,7 @@ services:
       - LANG=de_DE.UTF-8
       - TZ=Europe/Berlin
       - AMC_ACTION=move
-      - AMC_CONFLICT=skip
+      - AMC_CONFLICT=auto
       - AMC_LANG=German
       - AMC_MOVIE_FORMAT=movies/{n} ({y})
       - AMC_SERIES_FORMAT=shows/{n}/Season {s}/{n} - {s00e00} - {t}
@@ -18,6 +18,10 @@ services:
       - AMC_INPUT_DIR=/storage
       - AMC_OUTPUT_DIR=/
       - AMC_INTERVAL=300
+      - FILEBOT_GUI=0
+      - WEB_LISTENING_PORT=-1
+      - VNC_LISTENING_PORT=-1
+      - AMC_CUSTOM_OPTIONS="--def jellyfin=10.0.86.13:${JELLYFIN_KEY}"
     volumes:
       - config:/config
       - downloads:/storage
@@ -25,10 +29,6 @@ services:
       - movies:/movies
     networks:
       - traefik
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.filebot.rule=Host(`filebot.monphi.ch`)" 
-      - "traefik.http.services.filebot.loadbalancer.server.port=5802" 
 
 volumes:
   config:
