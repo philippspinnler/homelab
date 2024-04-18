@@ -5,8 +5,8 @@ services:
     ports:
       - 5802:5800
     environment:
-      - USER_ID=100
-      - GROUP_ID=100
+      - USER_ID=0
+      - GROUP_ID=0
       - LANG=de_DE.UTF-8
       - TZ=Europe/Berlin
       - AMC_ACTION=move
