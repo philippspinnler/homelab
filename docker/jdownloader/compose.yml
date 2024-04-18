@@ -2,20 +2,18 @@ services:
   jdownloader-2:
     image: jlesage/jdownloader-2
     container_name: jdownloader
-    ports:
-      - "5800:5800"
     environment:
       - USER_ID=0
       - GROUP_ID=0
+      - MYJDOWNLOADER_EMAIL=${MYJDOWNLOADER_EMAIL}
+      - MYJDOWNLOADER_PASSWORD=${MYJDOWNLOADER_PASSWORD}
+      - MYJDOWNLOADER_DEVICE_NAME=docker
+      - JDOWNLOADER_HEADLESS=1
     volumes:
       - config:/config
       - downloads:/output
     networks:
       - traefik
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.jdownloader.rule=Host(`jdownloader.monphi.ch`)" 
-      - "traefik.http.services.jdownloader.loadbalancer.server.port=5800" 
 
 volumes:
   config:
