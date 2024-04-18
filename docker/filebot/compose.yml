@@ -12,14 +12,16 @@ services:
       - AMC_ACTION=move
       - AMC_CONFLICT=skip
       - AMC_LANG=German
-      - AMC_MOVIE_FORMAT=Filme/{n}/{n} ({y})
-      - AMC_SERIES_FORMAT=Serien/{n}/Staffel {s}/{n} - {s00e00} - {t}
+      - AMC_MOVIE_FORMAT=movies/{n} ({y})
+      - AMC_SERIES_FORMAT=shows/{n}/Season {s}/{n} - {s00e00} - {t}
       - AMC_PROCESS_MUSIC=n
-      - AMC_INPUT_DIR=/storage/extracted
-      - AMC_OUTPUT_DIR=/storage/test
+      - AMC_INPUT_DIR=/storage
+      - AMC_OUTPUT_DIR=/
     volumes:
       - config:/config
       - downloads:/storage
+      - shows:/shows
+      - movies:/movies
     networks:
       - traefik
     labels:
@@ -38,6 +40,16 @@ volumes:
       type: "nfs"
       o: "addr=10.0.86.11,nfsvers=4"
       device: ":/volume3/Movies/downloads"
+  shows:
+    driver_opts:
+      type: "nfs"
+      o: "addr=10.0.86.11,nfsvers=4"
+      device: ":/volume3/Shows"
+  movies:
+    driver_opts:
+      type: "nfs"
+      o: "addr=10.0.86.11,nfsvers=4"
+      device: ":/volume3/Movies"
 
 networks:
   traefik:
