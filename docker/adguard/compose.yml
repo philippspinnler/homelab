@@ -1,0 +1,25 @@
+services:
+    adguardhome:
+        image: adguard/adguardhome
+        container_name: adguard
+        restart: unless-stopped
+        volumes:
+            - work:/opt/adguardhome/work
+            - conf:/opt/adguardhome/conf
+        ports:
+            - 53:53/udp
+            - 8000:80
+            - 8001:3000
+
+volumes:
+  work:
+    driver_opts:
+      type: "nfs"
+      o: "addr=10.0.86.11,nfsvers=4"
+      device: ":/volume6/docker/adguard/work"
+
+  conf:
+    driver_opts:
+      type: "nfs"
+      o: "addr=10.0.86.11,nfsvers=4"
+      device: ":/volume6/docker/adguard/conf"
