@@ -1,0 +1,25 @@
+services:
+  adguardhome-sync:
+    image: ghcr.io/bakito/adguardhome-sync
+    container_name: adguard-sync
+    command: run --config /config/adguard-sync.yml
+    volumes:
+      - config:/config
+    ports:
+      - 8080:8080
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.adguard-sync.rule=Host(`adguard-sync.monphi.ch`)" 
+      - "traefik.http.services.adguard-sync.loadbalancer.server.port=8080" 
+
+volumes:
+  config:
+    driver_opts:
+      type: "nfs"
+      o: "addr=10.0.86.11,nfsvers=4"
+      device: ":/volume6/docker/adguard-sync"
+
+networks:
+  traefik:
+    external: true

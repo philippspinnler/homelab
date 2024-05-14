@@ -9,7 +9,7 @@ services:
     ports:
         - 53:53/udp
         - 8000:80
-        # - 8001:3000 setup port
+        - 8001:3000
 
 volumes:
   work:
