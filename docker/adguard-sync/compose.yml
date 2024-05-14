@@ -8,6 +8,8 @@ services:
     ports:
       - 8002:8080
     restart: unless-stopped
+    networks:
+      - traefik
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.adguard-sync.rule=Host(`adguard-sync.monphi.ch`)" 
