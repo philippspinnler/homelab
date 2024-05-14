@@ -9,6 +9,7 @@ services:
     ports:
         - 53:53/udp
         - 8000:80
+        - 8001:3000
     networks:
       - traefik
     labels:
