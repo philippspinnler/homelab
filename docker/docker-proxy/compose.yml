@@ -13,9 +13,3 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     restart: unless-stopped
-    networks:
-      - traefik
-
-networks:
-  traefik:
-    external: true
