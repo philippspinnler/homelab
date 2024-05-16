@@ -27,6 +27,7 @@ services:
       - movies:/movies
     networks:
       - traefik
+    restart: unless-stopped
 
 volumes:
   config:
