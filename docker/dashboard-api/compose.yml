@@ -3,7 +3,7 @@ services:
     image: philippspinnler/dashboard-api:latest
     container_name: dashboard-api
     ports:
-      - 8090:8000
+      - 8000:8100
     volumes:
       - config:/app/config
       - images:/app/images
