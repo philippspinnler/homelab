@@ -8,12 +8,7 @@ services:
       - config:/app/config
       - images:/app/images
     restart: unless-stopped
-    networks:
-      - traefik
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.dashboard-api.rule=Host(`api.dashboard.monphi.ch`)" 
-      - "traefik.http.services.dashboard-api.loadbalancer.server.port=8000" 
+    network_mode: host # because of sonos
 
 volumes:
   config:
@@ -26,7 +21,3 @@ volumes:
       type: "nfs"
       o: "addr=10.0.86.11,nfsvers=4"
       device: ":/volume6/docker/dashboard/images"
-
-networks:
-  traefik:
-    external: true
