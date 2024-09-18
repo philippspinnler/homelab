@@ -1,0 +1,32 @@
+services:
+  dashboard-api:
+    image: philippspinnler/dashboard-api:latest
+    container_name: dashboard-api
+    ports:
+      - 8000:8090
+    volumes:
+      - config:/app/config
+      - images:/app/images
+    restart: unless-stopped
+    networks:
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.dashboard-api.rule=Host(`api.dashboard.monphi.ch`)" 
+      - "traefik.http.services.dashboard-api.loadbalancer.server.port=8090" 
+
+volumes:
+  config:
+    driver_opts:
+      type: "nfs"
+      o: "addr=10.0.86.11,nfsvers=4"
+      device: ":/volume6/docker/dashboard/config"
+  images:
+    driver_opts:
+      type: "nfs"
+      o: "addr=10.0.86.11,nfsvers=4"
+      device: ":/volume6/docker/dashboard/images"
+
+networks:
+  traefik:
+    external: true
