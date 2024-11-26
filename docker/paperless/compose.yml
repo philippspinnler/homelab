@@ -32,9 +32,15 @@ services:
       PAPERLESS_DBHOST: db
       USERMAP_UID: 0
       USERMAP_GID: 0
-      PAPERLESS_SECRET_KEY: gobPsV@qB_ud!!D6_M8PkZZcB!@Pf-ZgvFdAHGcGedp.Cmy_yKBkerRnKQxkBg_mmeeaxGJ-fceQjGNkD.8E-Q2vxP
+      PAPERLESS_SECRET_KEY: ${PAPERLESS_SECRET_KEY}
       PAPERLESS_TIME_ZONE: Europe/Zurich
       PAPERLESS_OCR_LANGUAGE: deu
+    networks:
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.paperless.rule=Host(`paperless.monphi.ch`)" 
+      - "traefik.http.services.paperless.loadbalancer.server.port=8010" 
 
 volumes:
   data:
