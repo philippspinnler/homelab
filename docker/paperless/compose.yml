@@ -33,7 +33,8 @@ services:
       - data:/usr/src/paperless/data
       - media:/usr/src/paperless/media
       - ./export:/usr/src/paperless/export
-      - ./consume:/usr/src/paperless/consume
+      #- ./consume:/usr/src/paperless/consume
+      - consume:/usr/src/paperless/consume
     environment:
       PAPERLESS_REDIS: redis://broker:6379
       PAPERLESS_DBHOST: db
@@ -42,6 +43,7 @@ services:
       PAPERLESS_SECRET_KEY: ${PAPERLESS_SECRET_KEY}
       PAPERLESS_TIME_ZONE: Europe/Zurich
       PAPERLESS_OCR_LANGUAGE: deu
+      PAPERLESS_URL: https://paperless.monphi.ch
     networks:
       - traefik
     labels:
@@ -74,3 +76,8 @@ volumes:
       type: "nfs"
       o: "addr=10.0.86.11,nfsvers=4"
       device: ":/volume6/docker/paperless/redisdata"
+  consume:
+    driver_opts:
+      type: "nfs"
+      o: "addr=10.0.86.11,nfsvers=4"
+      device: ":/volume6/docker/paperless/consume"
