@@ -1,0 +1,33 @@
+services:
+  plex:
+    image: lscr.io/linuxserver/plex:latest
+    container_name: plex
+    network_mode: host
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/Zurich
+      - VERSION=docker
+      - PLEX_CLAIM=claim-s6QHJezZPh1xassSBKd9
+    volumes:
+      - config:/config
+      - shows:/tv
+      - movies:/movies
+    restart: unless-stopped
+
+volumes:
+  config:
+    driver_opts:
+      type: "nfs"
+      o: "addr=10.0.86.11,nfsvers=4"
+      device: ":/volume6/docker/plex/config"
+  movies:
+    driver_opts:
+      type: "nfs"
+      o: "addr=10.0.86.11,ro,nfsvers=4"
+      device: ":/volume3/Movies"
+  shows:
+    driver_opts:
+      type: "nfs"
+      o: "addr=10.0.86.11,ro,nfsvers=4"
+      device: ":/volume3/Shows"
