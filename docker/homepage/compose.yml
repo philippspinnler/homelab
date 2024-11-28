@@ -13,6 +13,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.homepage.rule=Host(`homepage.monphi.ch`)" 
+      - "traefik.http.routers.homepage.middlewares=https-redirect@file"
       - "traefik.http.services.homepage.loadbalancer.server.port=3000" 
 
 volumes:
