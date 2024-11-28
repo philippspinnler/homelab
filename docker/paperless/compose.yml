@@ -49,6 +49,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.paperless.rule=Host(`paperless.monphi.ch`)" 
+      - "traefik.http.routers.paperless.middlewares=https-redirect@file"
       - "traefik.http.services.paperless.loadbalancer.server.port=8010" 
 
 networks:

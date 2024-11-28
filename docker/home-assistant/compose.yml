@@ -10,8 +10,9 @@ services:
     network_mode: host
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.pihole.rule=Host(`home-assistant.monphi.ch`)"
-      - "traefik.http.services.pihole.loadbalancer.server.port=8123"
+      - "traefik.http.routers.home-assistant.rule=Host(`home-assistant.monphi.ch`)"
+      - "traefik.http.routers.home-assistant.middlewares=https-redirect@file"
+      - "traefik.http.services.home-assistant.loadbalancer.server.port=8123"
 
 volumes:
   home-assistant-config:
