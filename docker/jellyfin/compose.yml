@@ -16,6 +16,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.jellyfin.rule=Host(`jellyfin.monphi.ch`)" 
+      - "traefik.http.routers.jellyfin.middlewares=https-redirect@file"
       - "traefik.http.services.jellyfin.loadbalancer.server.port=8096" 
 
 volumes:
