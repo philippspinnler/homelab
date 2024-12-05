@@ -8,7 +8,7 @@ services:
       - PGID=0
       - TZ=Europe/Zurich
       - VERSION=docker
-      - PLEX_CLAIM=claim-s6QHJezZPh1xassSBKd9
+      - PLEX_CLAIM=${PLEX_CLAIM}
     volumes:
       - config:/config
       - shows:/tv
