@@ -12,4 +12,4 @@ services:
       - WATCHTOWER_HTTP_API_METRICS=true
       - TZ=Europe/Zurich
       - WATCHTOWER_CLEANUP=true
-      - WATCHTOWER_POLL_INTERVAL=3600
+      # - WATCHTOWER_POLL_INTERVAL=3600
