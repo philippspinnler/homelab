@@ -17,7 +17,7 @@ services:
       - "traefik.http.routers.adguard.rule=Host(`adguard.monphi.ch`)" 
       - "traefik.http.routers.adguard.middlewares=https-redirect@file"
       - "traefik.http.services.adguard.loadbalancer.server.port=80" 
-      - "com.centurylinklabs.watchtower.enable"
+      - "com.centurylinklabs.watchtower.enable=true"
 
 volumes:
   work:

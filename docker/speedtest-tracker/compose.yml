@@ -15,6 +15,7 @@ services:
           - "traefik.enable=true"
           - "traefik.http.routers.speedtest-tracker.rule=Host(`speedtest-tracker.monphi.ch`)" 
           - "traefik.http.services.speedtest-tracker.loadbalancer.server.port=8080"
+          - "com.centurylinklabs.watchtower.enable=true"
 
 volumes:
   config:

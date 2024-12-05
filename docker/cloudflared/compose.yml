@@ -8,5 +8,5 @@ services:
     environment:
       - TUNNEL_TOKEN=${TUNNEL_TOKEN}
     labels:
-      - "com.centurylinklabs.watchtower.enable"
+      - "com.centurylinklabs.watchtower.enable=true"
     
