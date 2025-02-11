@@ -66,7 +66,7 @@ volumes:
     driver_opts:
       type: "nfs"
       o: "addr=10.0.86.11,nfsvers=4"
-      device: ":/volume6/docker/paperless/media"
+      device: ":/volume2/Paperless/media"
   pgdata:
     driver_opts:
       type: "nfs"
@@ -81,4 +81,4 @@ volumes:
     driver_opts:
       type: "nfs"
       o: "addr=10.0.86.11,nfsvers=4"
-      device: ":/volume6/docker/paperless/consume"
+      device: ":/volume2/Paperless/consume"
