@@ -5,11 +5,8 @@ services:
     restart: unless-stopped
     volumes:
       - redisdata:/data
-<<<<<<< HEAD
-=======
     networks:
       - containers
->>>>>>> 7cbaae43e7dfce4d1ef640b6208c821c88ecb4fe
   db:
     image: docker.io/library/postgres:16
     container_name: paperless-postgres
