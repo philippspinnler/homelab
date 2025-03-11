@@ -6,6 +6,7 @@ services:
             - 8088:80
         environment:
             - DB_CONNECTION=sqlite
+            - APP_KEY=${APP_KEY}
         volumes:
             - config:/config
         restart: unless-stopped
