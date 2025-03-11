@@ -12,7 +12,7 @@ services:
       - shows:/shows
     restart: 'unless-stopped'
     networks:
-      - traefik
+      - containers
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
 
@@ -39,5 +39,5 @@ volumes:
       device: ":/volume3/Shows"
 
 networks:
-  traefik:
+  containers:
     external: true

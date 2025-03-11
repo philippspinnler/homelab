@@ -6,8 +6,8 @@ services:
       - 8200:80
     restart: unless-stopped
     networks:
-      - traefik
+      - containers
 
 networks:
-  traefik:
+  containers:
     external: true

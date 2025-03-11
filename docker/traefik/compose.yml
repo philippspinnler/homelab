@@ -1,5 +1,5 @@
 services:
-  traefik:
+  containers:
     image: "traefik:v2.11"
     container_name: "traefik"
     ports:
@@ -11,7 +11,7 @@ services:
       - "letsencrypt:/letsencrypt"
       - "config:/etc/traefik"
     networks:
-      - traefik
+      - containers
     environment:
       - CLOUDFLARE_EMAIL=${CLOUDFLARE_EMAIL}
       - CLOUDFLARE_API_KEY=${CLOUDFLARE_API_KEY}
@@ -32,5 +32,5 @@ volumes:
       device: ":/volume6/docker/traefik/config"
 
 networks:
-  traefik:
+  containers:
     name: traefik

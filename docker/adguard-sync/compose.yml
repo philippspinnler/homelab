@@ -9,7 +9,7 @@ services:
       - 8002:8080
     restart: unless-stopped
     networks:
-      - traefik
+      - containers
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
 
@@ -21,5 +21,5 @@ volumes:
       device: ":/volume6/docker/adguard-sync"
 
 networks:
-  traefik:
+  containers:
     external: true

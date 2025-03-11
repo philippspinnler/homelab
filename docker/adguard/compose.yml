@@ -11,7 +11,7 @@ services:
         - 8000:80
         - 8001:3000
     networks:
-      - traefik
+      - containers
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
 
@@ -29,5 +29,5 @@ volumes:
       device: ":/volume6/docker/adguard/conf"
   
 networks:
-  traefik:
+  containers:
     external: true

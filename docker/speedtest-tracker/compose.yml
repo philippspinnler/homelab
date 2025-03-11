@@ -10,7 +10,7 @@ services:
             - config:/config
         restart: unless-stopped
         networks:
-          - traefik
+          - containers
 
 volumes:
   config:
@@ -20,5 +20,5 @@ volumes:
       device: ":/volume6/docker/speedtest-tracker/config"
 
 networks:
-  traefik:
+  containers:
     external: true

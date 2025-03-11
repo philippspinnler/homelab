@@ -26,7 +26,7 @@ services:
       - shows:/shows
       - movies:/movies
     networks:
-      - traefik
+      - containers
     restart: unless-stopped
 
 volumes:
@@ -52,5 +52,5 @@ volumes:
       device: ":/volume3/Movies"
 
 networks:
-  traefik:
+  containers:
     external: true

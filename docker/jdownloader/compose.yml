@@ -13,7 +13,7 @@ services:
       - config:/config
       - downloads:/output
     networks:
-      - traefik
+      - containers
     restart: unless-stopped
 
 volumes:
@@ -29,5 +29,5 @@ volumes:
       device: ":/volume3/jdownloader"
 
 networks:
-  traefik:
+  containers:
     external: true

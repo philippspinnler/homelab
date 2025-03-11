@@ -25,5 +25,5 @@ volumes:
       device: ":/volume6/docker/nginx-proxy-manager/letsencrypt"
   
 networks:
-  traefik:
+  containers:
     external: true
