@@ -5,9 +5,3 @@ services:
     ports:
       - 8200:80
     restart: unless-stopped
-    networks:
-      - traefik
-
-networks:
-  traefik:
-    external: true

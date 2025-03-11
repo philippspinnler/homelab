@@ -10,8 +10,6 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
       - "letsencrypt:/letsencrypt"
       - "config:/etc/traefik"
-    networks:
-      - traefik
     environment:
       - CLOUDFLARE_EMAIL=${CLOUDFLARE_EMAIL}
       - CLOUDFLARE_API_KEY=${CLOUDFLARE_API_KEY}
@@ -30,7 +28,3 @@ volumes:
       type: "nfs"
       o: "addr=10.0.86.11,nfsvers=4"
       device: ":/volume6/docker/traefik/config"
-
-networks:
-  traefik:
-    name: traefik

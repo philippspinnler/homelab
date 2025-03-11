@@ -12,8 +12,6 @@ services:
     volumes:
       - config:/config
       - downloads:/output
-    networks:
-      - traefik
     restart: unless-stopped
 
 volumes:
@@ -27,7 +25,3 @@ volumes:
       type: "nfs"
       o: "addr=10.0.86.11,nfsvers=4"
       device: ":/volume3/jdownloader"
-
-networks:
-  traefik:
-    external: true

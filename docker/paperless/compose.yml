@@ -5,8 +5,6 @@ services:
     restart: unless-stopped
     volumes:
       - redisdata:/data
-    networks:
-      - traefik
   db:
     image: docker.io/library/postgres:16
     container_name: paperless-postgres
@@ -17,8 +15,6 @@ services:
       POSTGRES_DB: paperless
       POSTGRES_USER: paperless
       POSTGRES_PASSWORD: paperless
-    networks:
-      - traefik
 
   webserver:
     image: ghcr.io/paperless-ngx/paperless-ngx:latest
@@ -44,12 +40,6 @@ services:
       PAPERLESS_TIME_ZONE: Europe/Zurich
       PAPERLESS_OCR_LANGUAGE: deu
       PAPERLESS_URL: https://paperless.monphi.ch
-    networks:
-      - traefik
-
-networks:
-  traefik:
-    external: true
 
 volumes:
   data:

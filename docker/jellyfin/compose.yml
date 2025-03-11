@@ -11,8 +11,6 @@ services:
       - movies:/movies
       - shows:/shows
     restart: 'unless-stopped'
-    networks:
-      - traefik
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
 
@@ -37,7 +35,3 @@ volumes:
       type: "nfs"
       o: "addr=10.0.86.11,ro,nfsvers=4"
       device: ":/volume3/Shows"
-
-networks:
-  traefik:
-    external: true

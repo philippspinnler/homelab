@@ -23,7 +23,3 @@ volumes:
       type: "nfs"
       o: "addr=10.0.86.11,nfsvers=4"
       device: ":/volume6/docker/nginx-proxy-manager/letsencrypt"
-  
-networks:
-  traefik:
-    external: true

@@ -8,8 +8,6 @@ services:
       - config:/app/config
       # - /var/run/docker.sock:/var/run/docker.sock
     restart: unless-stopped
-    networks:
-      - traefik
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
 
@@ -19,7 +17,3 @@ volumes:
       type: "nfs"
       o: "addr=10.0.86.11,nfsvers=4"
       device: ":/volume6/docker/homepage/config"
-
-networks:
-  traefik:
-    external: true

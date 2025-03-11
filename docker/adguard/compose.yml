@@ -10,8 +10,6 @@ services:
         - 53:53/udp
         - 8000:80
         - 8001:3000
-    networks:
-      - traefik
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
 
@@ -27,7 +25,3 @@ volumes:
       type: "nfs"
       o: "addr=10.0.86.11,nfsvers=4"
       device: ":/volume6/docker/adguard/conf"
-  
-networks:
-  traefik:
-    external: true
