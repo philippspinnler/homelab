@@ -9,6 +9,8 @@ services:
         volumes:
             - config:/config
         restart: unless-stopped
+        networks:
+          - containers
 
 volumes:
   config:
@@ -16,3 +18,7 @@ volumes:
       type: "nfs"
       o: "addr=10.0.86.11,nfsvers=4"
       device: ":/volume6/docker/speedtest-tracker/config"
+
+networks:
+  containers:
+    external: true

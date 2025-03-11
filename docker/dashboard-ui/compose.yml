@@ -5,3 +5,9 @@ services:
     ports:
       - 8200:80
     restart: unless-stopped
+    networks:
+      - containers
+
+networks:
+  containers:
+    external: true
