@@ -19,7 +19,7 @@ services:
       - FILEBOT_GUI=0
       - WEB_LISTENING_PORT=-1
       - VNC_LISTENING_PORT=-1
-      - AMC_CUSTOM_OPTIONS=--def jellyfin=10.0.86.25:${JELLYFIN_KEY} plex=10.0.86.13:${PLEX_TOKEN}
+      - AMC_CUSTOM_OPTIONS=--def jellyfin=10.0.86.25:${JELLYFIN_KEY} # plex=10.0.86.13:${PLEX_TOKEN}
     volumes:
       - config:/config
       - downloads:/storage
