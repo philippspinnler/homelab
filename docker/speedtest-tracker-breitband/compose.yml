@@ -7,6 +7,9 @@ services:
         environment:
             - DB_CONNECTION=sqlite
             - APP_KEY=${APP_KEY}
+            - APP_TIMEZONE=Europe/Zurich
+            - PUBLIC_DASHBOARD=true
+            - SPEEDTEST_SCHEDULE=30 */2 * * *
         volumes:
             - config:/config
         restart: unless-stopped
