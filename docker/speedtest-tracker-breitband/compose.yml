@@ -5,8 +5,6 @@ services:
         ports:
             - 8088:80
         environment:
-            - PUID=0
-            - PGID=0
             - DB_CONNECTION=sqlite
             - APP_KEY=${APP_KEY}
             - APP_TIMEZONE=Europe/Zurich
