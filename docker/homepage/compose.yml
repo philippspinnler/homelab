@@ -12,6 +12,8 @@ services:
       - containers
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
+    environment:
+      - HOMEPAGE_ALLOWED_HOSTS=homepage.monphi.ch
 
 volumes:
   config:
