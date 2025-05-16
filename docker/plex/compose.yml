@@ -10,7 +10,7 @@ services:
       - VERSION=docker
       - PLEX_CLAIM=${PLEX_CLAIM}
     volumes:
-      - config:/config
+      - /data/plex/config:/config
       - shows:/tv
       - movies:/movies
     restart: unless-stopped
@@ -18,11 +18,11 @@ services:
       - "com.centurylinklabs.watchtower.enable=true"
 
 volumes:
-  config:
-    driver_opts:
-      type: "nfs"
-      o: "addr=10.0.86.11,nfsvers=4"
-      device: ":/volume6/docker/plex/config"
+  # config:
+  #   driver_opts:
+  #     type: "nfs"
+  #     o: "addr=10.0.86.11,nfsvers=4"
+  #     device: ":/volume6/docker/plex/config"
   movies:
     driver_opts:
       type: "nfs"
