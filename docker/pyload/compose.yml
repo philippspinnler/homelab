@@ -1,0 +1,32 @@
+services:
+  pyload-ng:
+    image: lscr.io/linuxserver/pyload-ng:latest
+    container_name: pyload
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Zurich
+    volumes:
+      - config:/config
+      - downloads:/downloads
+    ports:
+      - 8300:8000
+    restart: unless-stopped
+    networks:
+      - containers
+
+networks:
+  containers:
+    external: true
+
+volumes:
+  config:
+    driver_opts:
+      type: "nfs"
+      o: "addr=10.0.86.11,nfsvers=4"
+      device: ":/volume6/docker/pyload/config"
+  downloads:
+    driver_opts:
+      type: "nfs"
+      o: "addr=10.0.86.11,nfsvers=4"
+      device: ":/volume3/jdownloader"
