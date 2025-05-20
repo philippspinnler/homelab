@@ -11,6 +11,7 @@ services:
       - downloads:/downloads
     ports:
       - 8300:8000
+      - 9666:9666
     restart: unless-stopped
     networks:
       - containers
