@@ -1,0 +1,27 @@
+services:
+   open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: open-webui
+    volumes:
+      - data:/app/backend/data
+    depends_on:
+      - ollama
+    ports:
+      - "8500:8080"
+    environment:
+      - 'OLLAMA_BASE_URL=http://ollama:11434'
+      - 'WEBUI_SECRET_KEY=K8Wu9BVWH29Eyj8AaP2dA@2Ya93bhi'
+    restart: unless-stopped
+    networks:
+      - containers
+
+networks:
+  containers:
+    external: true
+
+volumes:
+  data:
+    driver_opts:
+      type: "nfs"
+      o: "addr=10.0.86.11,nfsvers=4"
+      device: ":/volume6/docker/open-webui/data"
