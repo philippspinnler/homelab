@@ -1,0 +1,22 @@
+services:
+  paperless-ai:
+    image: clusterzx/paperless-ai:latest
+    container_name: paperless-ai
+    volumes:
+      - data:/data
+    ports:
+      - 8400:3000
+    restart: unless-stopped
+    networks:
+      - containers
+
+networks:
+  containers:
+    external: true
+
+volumes:
+  data:
+    driver_opts:
+      type: "nfs"
+      o: "addr=10.0.86.11,nfsvers=4"
+      device: ":/volume6/docker/paperless-ai/data"
