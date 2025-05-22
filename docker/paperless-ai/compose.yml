@@ -5,7 +5,7 @@ services:
     volumes:
       - data:/data
     ports:
-      - 8400:3000
+      - 8400:8000
     restart: unless-stopped
     networks:
       - containers
