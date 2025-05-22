@@ -3,9 +3,9 @@ services:
     image: clusterzx/paperless-ai:latest
     container_name: paperless-ai
     volumes:
-      - data:/data
+      - data:/app/data
     ports:
-      - 8400:8000
+      - 8400:3000
     restart: unless-stopped
     networks:
       - containers
