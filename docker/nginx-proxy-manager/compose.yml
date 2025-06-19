@@ -15,14 +15,14 @@ volumes:
   data:
     driver_opts:
       type: "nfs"
-      o: "addr=10.0.86.10,nfsvers=3"
-      device: ":/Docker/nginx-proxy-manager/data"
+      o: "addr=10.0.86.10"
+      device: ":/var/nfs/shared/Docker/nginx-proxy-manager/data"
 
   letsencrypt:
     driver_opts:
       type: "nfs"
-      o: "addr=10.0.86.10,nfsvers=3"
-      device: ":/Docker/nginx-proxy-manager/letsencrypt"
+      o: "addr=10.0.86.10"
+      device: ":/var/nfs/shared/Docker/nginx-proxy-manager/letsencrypt"
   
 networks:
   containers:
