@@ -17,7 +17,7 @@ volumes:
   config:
     driver_opts:
       type: "nfs"
-      o: "addr=10.0.86.10,nfsvers=3"
+      o: "addr=10.0.86.10,nfsvers=3,nolock,soft,rw"
       device: ":/var/nfs/shared/Docker/adguard-sync"
 
 networks:
