@@ -3,8 +3,6 @@ services:
     image: lscr.io/linuxserver/pyload-ng:latest
     container_name: pyload
     environment:
-      - PUID=0
-      - PGID=0
       - TZ=Europe/Zurich
     volumes:
       - config:/config
