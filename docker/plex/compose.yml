@@ -27,9 +27,9 @@ volumes:
     driver_opts:
       type: "nfs"
       o: "addr=10.0.86.10,nfsvers=3,nolock,hard,ro"
-      device: ":/var/nfs/shared/Docker/Media/Movies"
+      device: ":/var/nfs/shared/Media/Movies"
   shows:
     driver_opts:
       type: "nfs"
       o: "addr=10.0.86.10,nfsvers=3,nolock,hard,ro"
-      device: ":/var/nfs/shared/Docker/Media/Shows"
+      device: ":/var/nfs/shared/Media/Shows"
