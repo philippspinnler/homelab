@@ -10,6 +10,11 @@ services:
     volumes:
       - data:/data
       - letsencrypt:/etc/letsencrypt
+    environment:
+      PUID: 1000
+      PGID: 988
+      USER_ID: 1000
+      GROUP_ID: 988
 
 volumes:
   data:
