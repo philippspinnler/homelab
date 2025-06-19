@@ -12,10 +12,10 @@ volumes:
   config:
     driver_opts:
       type: "nfs"
-      o: "addr=10.0.86.10,nfsvers=3,nolock,soft,rw"
+      o: "addr=10.0.86.10,nfsvers=3,nolock,hard,rw"
       device: ":/var/nfs/shared/Docker/dashboard/config"
   images:
     driver_opts:
       type: "nfs"
-      o: "addr=10.0.86.10,nfsvers=3,nolock,soft,rw"
+      o: "addr=10.0.86.10,nfsvers=3,nolock,hard,rw"
       device: ":/var/nfs/shared/Docker/dashboard/images"
