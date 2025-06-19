@@ -44,12 +44,12 @@ volumes:
     driver_opts:
       type: "nfs"
       o: "addr=10.0.86.10,nfsvers=3,nolock,soft,rw"
-      device: ":/Media/Shows"
+      device: ":/var/nfs/shared/Media/Shows"
   movies:
     driver_opts:
       type: "nfs"
       o: "addr=10.0.86.10,nfsvers=3,nolock,soft,rw"
-      device: ":/Media/Movies"
+      device: ":/var/nfs/shared/Media/Movies"
 
 networks:
   containers:
