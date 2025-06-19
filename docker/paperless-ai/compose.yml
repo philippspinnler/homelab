@@ -18,5 +18,5 @@ volumes:
   data:
     driver_opts:
       type: "nfs"
-      o: "addr=10.0.86.10"
+      o: "addr=10.0.86.10,nfsvers=3"
       device: ":/var/nfs/shared/Docker/paperless-ai/data"

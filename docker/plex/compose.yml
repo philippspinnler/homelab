@@ -21,15 +21,15 @@ volumes:
   # config:
   #   driver_opts:
   #     type: "nfs"
-  #     o: "addr=10.0.86.10"
+  #     o: "addr=10.0.86.10,nfsvers=3"
   #     device: ":/var/nfs/shared/Docker/plex/config"
   movies:
     driver_opts:
       type: "nfs"
-      o: "addr=10.0.86.10,ro"
+      o: "addr=10.0.86.10,nfsvers=3,ro"
       device: ":/var/nfs/shared/Docker/Media/Movies"
   shows:
     driver_opts:
       type: "nfs"
-      o: "addr=10.0.86.10,ro"
+      o: "addr=10.0.86.10,nfsvers=3,ro"
       device: ":/var/nfs/shared/Docker/Media/Shows"
