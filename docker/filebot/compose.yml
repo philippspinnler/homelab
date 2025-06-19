@@ -33,23 +33,23 @@ volumes:
   config:
     driver_opts:
       type: "nfs"
-      o: "addr=10.0.86.11,nfsvers=4"
-      device: ":/volume6/docker/filebot/config"
+      o: "addr=10.0.86.10,nfsvers=4"
+      device: ":/Docker/filebot/config"
   downloads:
     driver_opts:
       type: "nfs"
-      o: "addr=10.0.86.11,nfsvers=4"
-      device: ":/volume3/jdownloader"
+      o: "addr=10.0.86.10,nfsvers=4"
+      device: ":/Docker/pyload/downloads"
   shows:
     driver_opts:
       type: "nfs"
-      o: "addr=10.0.86.11,nfsvers=4"
-      device: ":/volume3/Shows"
+      o: "addr=10.0.86.10,nfsvers=4"
+      device: ":/Media/Shows"
   movies:
     driver_opts:
       type: "nfs"
-      o: "addr=10.0.86.11,nfsvers=4"
-      device: ":/volume3/Movies"
+      o: "addr=10.0.86.10,nfsvers=4"
+      device: ":/Media/Movies"
 
 networks:
   containers:

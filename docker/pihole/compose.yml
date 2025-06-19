@@ -20,11 +20,11 @@ volumes:
   pihole:
     driver_opts:
       type: "nfs"
-      o: "addr=10.0.86.11,nfsvers=4"
-      device: ":/volume6/docker/pihole/pihole"
+      o: "addr=10.0.86.10,nfsvers=4"
+      device: ":/Docker/pihole/pihole"
 
   dnsmasq:
     driver_opts:
       type: "nfs"
-      o: "addr=10.0.86.11,nfsvers=4"
-      device: ":/volume6/docker/pihole/dnsmasq.d"
+      o: "addr=10.0.86.10,nfsvers=4"
+      device: ":/Docker/pihole/dnsmasq.d"

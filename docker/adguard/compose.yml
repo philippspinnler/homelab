@@ -19,14 +19,14 @@ volumes:
   work:
     driver_opts:
       type: "nfs"
-      o: "addr=10.0.86.11,nfsvers=4"
-      device: ":/volume6/docker/adguard/work"
+      o: "addr=10.0.86.10,nfsvers=4"
+      device: ":/Docker/adguard/work"
 
   conf:
     driver_opts:
       type: "nfs"
-      o: "addr=10.0.86.11,nfsvers=4"
-      device: ":/volume6/docker/adguard/conf"
+      o: "addr=10.0.86.10,nfsvers=4"
+      device: ":/Docker/adguard/conf"
   
 networks:
   containers:
