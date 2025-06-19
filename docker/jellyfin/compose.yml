@@ -20,22 +20,22 @@ volumes:
   config:
     driver_opts:
       type: "nfs"
-      o: "addr=10.0.86.10,nfsvers=4"
+      o: "addr=10.0.86.10,nfsvers=3"
       device: ":/Docker/jellyfin/config"
   cache:
     driver_opts:
       type: "nfs"
-      o: "addr=10.0.86.10,nfsvers=4"
+      o: "addr=10.0.86.10,nfsvers=3"
       device: ":/Docker/jellyfin/cache"
   movies:
     driver_opts:
       type: "nfs"
-      o: "addr=10.0.86.10,ro,nfsvers=4"
+      o: "addr=10.0.86.10,ro,nfsvers=3"
       device: ":/volume3/Movies"
   shows:
     driver_opts:
       type: "nfs"
-      o: "addr=10.0.86.10,ro,nfsvers=4"
+      o: "addr=10.0.86.10,ro,nfsvers=3"
       device: ":/volume3/Shows"
 
 networks:
