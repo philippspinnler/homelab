@@ -10,11 +10,6 @@ services:
     volumes:
       - data:/data
       - letsencrypt:/etc/letsencrypt
-    environment:
-      PUID: 977
-      PGID: 988
-      USER_ID: 977
-      GROUP_ID: 988
 
 volumes:
   data:
