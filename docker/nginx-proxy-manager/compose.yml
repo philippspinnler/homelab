@@ -15,6 +15,7 @@ services:
       PGID: 988
       USER_ID: 1000
       GROUP_ID: 988
+    user: "1000:988"      
 
 volumes:
   data:
