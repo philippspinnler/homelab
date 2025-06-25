@@ -54,10 +54,6 @@ services:
 
 volumes:
   model-cache:
-    driver_opts:
-      type: "nfs"
-      o: "addr=10.0.86.10,nfsvers=3,nolock,hard,rw"
-      device: ":/var/nfs/shared/Docker/immich/model-cache:"
   upload:
     driver_opts:
       type: "nfs"
