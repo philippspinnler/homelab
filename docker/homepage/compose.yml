@@ -14,6 +14,8 @@ services:
       - "com.centurylinklabs.watchtower.enable=true"
     environment:
       - HOMEPAGE_ALLOWED_HOSTS=homepage.monphi.ch
+      - PUID=1000
+      - PGID=988
 
 volumes:
   config:
