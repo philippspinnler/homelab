@@ -38,7 +38,7 @@ services:
     environment:
       PAPERLESS_REDIS: redis://broker:6379
       PAPERLESS_DBHOST: db
-      USERMAP_UID: 1000
+      USERMAP_UID: 1003 # need to use the printer user id so permissions are correct in the consume folder
       USERMAP_GID: 988
       PAPERLESS_SECRET_KEY: ${PAPERLESS_SECRET_KEY}
       PAPERLESS_TIME_ZONE: Europe/Zurich
