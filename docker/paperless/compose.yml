@@ -38,8 +38,8 @@ services:
     environment:
       PAPERLESS_REDIS: redis://broker:6379
       PAPERLESS_DBHOST: db
-      USERMAP_UID: 0
-      USERMAP_GID: 0
+      USERMAP_UID: 1000
+      USERMAP_GID: 988
       PAPERLESS_SECRET_KEY: ${PAPERLESS_SECRET_KEY}
       PAPERLESS_TIME_ZONE: Europe/Zurich
       PAPERLESS_OCR_LANGUAGE: deu
