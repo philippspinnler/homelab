@@ -3,6 +3,9 @@ services:
     image: 'jc21/nginx-proxy-manager:latest'
     restart: unless-stopped
     container_name: nginx-proxy-manager
+    environment:
+      - PUID=1000
+      - PGID=988
     ports:
       - '80:80'
       - '81:81'
