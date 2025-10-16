@@ -6,9 +6,9 @@ services:
       - 8200:80
     restart: unless-stopped
     environment:
-      - DB_PASSWORD=${DB_PASSWORD}
-      - DB_USERNAME=${DB_USERNAME}
-      - DB_DATABASE_NAME=${DB_DATABASE_NAME}
+      - VITE_WIDGETS_LEFT=${VITE_WIDGETS_LEFT}
+      - VITE_WIDGETS_RIGHT=${VITE_WIDGETS_RIGHT}
+      - VITE_WIDGETS_BOTTOM=${VITE_WIDGETS_BOTTOM}
     networks:
       - containers
 
