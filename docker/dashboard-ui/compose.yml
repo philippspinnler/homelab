@@ -5,6 +5,10 @@ services:
     ports:
       - 8200:80
     restart: unless-stopped
+    environment:
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_DATABASE_NAME=${DB_DATABASE_NAME}
     networks:
       - containers
 
