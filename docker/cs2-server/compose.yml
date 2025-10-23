@@ -2,7 +2,7 @@ version: '3.8'
 services:
   cs2-server:
     image: joedwards32/cs2
-    container_name: cs2
+    container_name: cs2-server
     environment:
       - CS2_LAN=1
       - CS2_SERVERNAME=BBC-ESC Old Boys
