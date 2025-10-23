@@ -21,7 +21,7 @@ services:
     image: soren90/rcon-panel
     container_name: cs2-server-ui
     ports:
-      - "8002:3000"
+      - "8003:3000"
     restart: unless-stopped
     depends_on:
       - cs2-server
