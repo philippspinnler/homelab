@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  cs2-server:
+    image: joedwards32/cs2
+    container_name: cs2
+    environment:
+      - CS2_LAN=1
+      - CS2_SERVERNAME=BBC-ESC Old Boys
+      - CS2_RCONPW=${CS2_RCONPW}
+      - CS2_MAXPLAYERS=10
+      - CS2_GAMEALIAS=competitive
+      - CS2_STARTMAP=de_dust2
+    volumes:
+      - cs2-server:/home/steam/cs2-dedicated/
+    ports:
+      - "27015:27015/tcp"
+      - "27015:27015/udp"
+      - "27020:27020/udp"
+    restart: unless-stopped
+
+volumes:
+  cs2-server:
+    driver_opts:
+      type: "nfs"
+      o: "addr=10.0.86.10,nfsvers=3,nolock,hard,rw"
+      device: ":/var/nfs/shared/Docker/cs2-server/cs2-dedicated"
