@@ -18,7 +18,7 @@ services:
       - "27020:27020/udp"
     restart: unless-stopped
   cs2-server-ui:
-    image: ghcr.io/shobhit-pathak/cs2-rcon-panel:latest
+    image: soren90/rcon-panel
     container_name: cs2-server-ui
     ports:
       - "8002:3000"
