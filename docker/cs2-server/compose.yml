@@ -4,7 +4,8 @@ services:
     image: joedwards32/cs2
     container_name: cs2-server
     environment:
-      - CS2_LAN=1
+      - SRCDS_TOKEN=${SRCDS_TOKEN}  # Required for internet servers
+      - CS2_LAN=0  # Changed from 1 to 0 to enable internet connectivity
       - CS2_SERVERNAME=BBC-ESC Old Boys
       - CS2_RCONPW=${CS2_RCONPW}
       - CS2_MAXPLAYERS=10
@@ -25,6 +26,7 @@ services:
     restart: unless-stopped
     depends_on:
       - cs2-server
+
 
 volumes:
   cs2-server:
