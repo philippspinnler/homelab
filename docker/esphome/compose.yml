@@ -1,0 +1,17 @@
+services:
+  esphome:
+    container_name: esphome
+    image: esphome/esphome:latest
+    volumes:
+      - esphome-config:/config
+    restart: unless-stopped
+    network_mode: host
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+
+volumes:
+  esphome-config:
+    driver_opts:
+      type: "nfs"
+      o: "addr=10.0.86.10,nfsvers=3,nolock,hard,rw"
+      device: ":/var/nfs/shared/Docker/esphome/config"
