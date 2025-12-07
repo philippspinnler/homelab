@@ -20,6 +20,7 @@ services:
       - WEB_LISTENING_PORT=-1
       - VNC_LISTENING_PORT=-1
       - AMC_CUSTOM_OPTIONS=--def plex=10.0.86.25:${PLEX_TOKEN} # jellyfin=10.0.86.25:${JELLYFIN_KEY}
+      - FILEBOT_OPTS="-DuseExtendedFileAttributes=false -Djava.awt.headless=true"
     volumes:
       - config:/config
       - downloads:/storage
