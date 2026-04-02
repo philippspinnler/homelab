@@ -3,6 +3,9 @@ services:
     image: clusterzx/paperless-ai:latest
     container_name: paperless-ai
     user: "1004:988"
+    environment:
+      PM2_HOME: /app/data/.pm2
+      NLTK_DATA: /app/data/nltk_data
     volumes:
       - data:/app/data
     ports:
