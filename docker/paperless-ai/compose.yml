@@ -9,6 +9,8 @@ services:
       NLTK_DATA: /app/data/nltk_data
     tmpfs:
       - /app/logs
+      - /app/data/.pm2
+      - /app/data/nltk_data
     volumes:
       - data:/app/data
     ports:
