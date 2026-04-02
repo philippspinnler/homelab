@@ -4,13 +4,11 @@ services:
     container_name: paperless-ai
     user: "1004:988"
     environment:
-      HOME: /app/data
-      PM2_HOME: /app/data/.pm2
-      NLTK_DATA: /app/data/nltk_data
+      HOME: /tmp
+      PM2_HOME: /tmp/.pm2
+      NLTK_DATA: /tmp/nltk_data
     tmpfs:
       - /app/logs
-      - /app/data/.pm2
-      - /app/data/nltk_data
     volumes:
       - data:/app/data
     ports:
