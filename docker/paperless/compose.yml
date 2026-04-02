@@ -38,7 +38,7 @@ services:
     environment:
       PAPERLESS_REDIS: redis://broker:6379
       PAPERLESS_DBHOST: db
-      USERMAP_UID: 1003 # need to use the printer user id so permissions are correct in the consume folder
+      USERMAP_UID: 1004 # docker user on UNAS Pro (UID=1004, GID=988 unifi-drive group shared with printer)
       USERMAP_GID: 988
       PAPERLESS_SECRET_KEY: ${PAPERLESS_SECRET_KEY}
       PAPERLESS_TIME_ZONE: Europe/Zurich
@@ -65,15 +65,7 @@ volumes:
       o: "addr=10.0.86.10,nfsvers=3,nolock,hard,rw"
       device: ":/var/nfs/shared/Docker/paperless/media"
   pgdata:
-    driver_opts:
-      type: "nfs"
-      o: "addr=10.0.86.10,nfsvers=3,nolock,hard,rw"
-      device: ":/var/nfs/shared/Docker/paperless/pgdata"
   redisdata:
-    driver_opts:
-      type: "nfs"
-      o: "addr=10.0.86.10,nfsvers=3,nolock,hard,rw"
-      device: ":/var/nfs/shared/Docker/paperless/redisdata"
   consume:
     driver_opts:
       type: "nfs"
