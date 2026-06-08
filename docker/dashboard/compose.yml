@@ -6,13 +6,73 @@ services:
     # Host networking so the Sonos widget can discover speakers via SSDP/multicast
     # (same reason the old dashboard-api used it).
     network_mode: host
-    # All NUXT_* config (secrets, location, layout) comes from the local .env file.
-    env_file:
-      - .env
+    # All config is provided by Portainer's stack environment variables.
+    # In Portainer use "Load variables from .env file" to bulk-import .env.example,
+    # then fill in the real values — no need to add each key manually.
     environment:
       # homepage already publishes :3000 on the host, so serve the dashboard elsewhere.
       - HOST=0.0.0.0
       - PORT=8201
+
+      # --- Layout (public) ---
+      - NUXT_PUBLIC_WIDGETS_TOP_LEFT=${NUXT_PUBLIC_WIDGETS_TOP_LEFT}
+      - NUXT_PUBLIC_WIDGETS_TOP_RIGHT=${NUXT_PUBLIC_WIDGETS_TOP_RIGHT}
+      - NUXT_PUBLIC_WIDGETS_LEFT=${NUXT_PUBLIC_WIDGETS_LEFT}
+      - NUXT_PUBLIC_WIDGETS_RIGHT=${NUXT_PUBLIC_WIDGETS_RIGHT}
+      - NUXT_PUBLIC_WIDGETS_BOTTOM=${NUXT_PUBLIC_WIDGETS_BOTTOM}
+      - NUXT_PUBLIC_ENABLE_GLASSMORPHISM=${NUXT_PUBLIC_ENABLE_GLASSMORPHISM}
+      - NUXT_PUBLIC_USE_MOCK_DATA=${NUXT_PUBLIC_USE_MOCK_DATA}
+
+      # --- Weather ---
+      - NUXT_WEATHER_API_KEY=${NUXT_WEATHER_API_KEY}
+      - NUXT_WEATHER_DEFAULT_LAT=${NUXT_WEATHER_DEFAULT_LAT}
+      - NUXT_WEATHER_DEFAULT_LON=${NUXT_WEATHER_DEFAULT_LON}
+
+      # --- Locale ---
+      - NUXT_TIMEZONE=${NUXT_TIMEZONE}
+
+      # --- Home Assistant ---
+      - NUXT_HOME_ASSISTANT_URL=${NUXT_HOME_ASSISTANT_URL}
+      - NUXT_HOME_ASSISTANT_TOKEN=${NUXT_HOME_ASSISTANT_TOKEN}
+      - NUXT_HOME_ASSISTANT_PERSON_ENTITIES=${NUXT_HOME_ASSISTANT_PERSON_ENTITIES}
+
+      # --- Netatmo ---
+      - NUXT_NETATMO_INDOOR_TEMPERATURE_ENTITY=${NUXT_NETATMO_INDOOR_TEMPERATURE_ENTITY}
+      - NUXT_NETATMO_INDOOR_CO2_ENTITY=${NUXT_NETATMO_INDOOR_CO2_ENTITY}
+      - NUXT_NETATMO_OUTDOOR_TEMPERATURE_ENTITY=${NUXT_NETATMO_OUTDOOR_TEMPERATURE_ENTITY}
+
+      # --- Sonos ---
+      - NUXT_SONOS_DEVICES=${NUXT_SONOS_DEVICES}
+
+      # --- Calendars / transport / speedtest / cars (JSON) ---
+      - NUXT_CALENDARS_JSON=${NUXT_CALENDARS_JSON}
+      - NUXT_TRANSPORT_CONNECTIONS_JSON=${NUXT_TRANSPORT_CONNECTIONS_JSON}
+      - NUXT_SPEEDTESTS_JSON=${NUXT_SPEEDTESTS_JSON}
+      - NUXT_CARS_JSON=${NUXT_CARS_JSON}
+
+      # --- Inverter ---
+      - NUXT_INVERTER_PV_POWER_ENTITY=${NUXT_INVERTER_PV_POWER_ENTITY}
+      - NUXT_INVERTER_POWER_CONSUMPTION_ENTITY=${NUXT_INVERTER_POWER_CONSUMPTION_ENTITY}
+      - NUXT_INVERTER_GRID_CONSUMPTION_ENTITY=${NUXT_INVERTER_GRID_CONSUMPTION_ENTITY}
+      - NUXT_INVERTER_GRID_FEEDIN_ENTITY=${NUXT_INVERTER_GRID_FEEDIN_ENTITY}
+      - NUXT_INVERTER_BATTERY_STATE_OF_CHARGE_ENTITY=${NUXT_INVERTER_BATTERY_STATE_OF_CHARGE_ENTITY}
+      - NUXT_INVERTER_BATTERY_POWER_ENTITY=${NUXT_INVERTER_BATTERY_POWER_ENTITY}
+      - NUXT_INVERTER_POWER_SCALE=${NUXT_INVERTER_POWER_SCALE}
+
+      # --- Photo album background ---
+      - NUXT_ALBUM_PROVIDER=${NUXT_ALBUM_PROVIDER}
+      - NUXT_ICLOUD_ALBUM_ID=${NUXT_ICLOUD_ALBUM_ID}
+      - NUXT_IMMICH_URL=${NUXT_IMMICH_URL}
+      - NUXT_IMMICH_API_KEY=${NUXT_IMMICH_API_KEY}
+      - NUXT_IMMICH_SHARE_KEY=${NUXT_IMMICH_SHARE_KEY}
+      - NUXT_IMMICH_ALBUM_NAME=${NUXT_IMMICH_ALBUM_NAME}
+      - NUXT_IMMICH_C=${NUXT_IMMICH_C}
+
+      # --- eo-guide (AppFigures) ---
+      - NUXT_EOGUIDE_CLIENT_KEY=${NUXT_EOGUIDE_CLIENT_KEY}
+      - NUXT_EOGUIDE_USERNAME=${NUXT_EOGUIDE_USERNAME}
+      - NUXT_EOGUIDE_PASSWORD=${NUXT_EOGUIDE_PASSWORD}
+
     # Let Watchtower auto-update this container when a new :latest is pushed.
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
