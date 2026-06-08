@@ -1,0 +1,18 @@
+services:
+  dashboard:
+    image: philippspinnler/dashboard:latest
+    container_name: dashboard
+    restart: unless-stopped
+    # Host networking so the Sonos widget can discover speakers via SSDP/multicast
+    # (same reason the old dashboard-api used it).
+    network_mode: host
+    # All NUXT_* config (secrets, location, layout) comes from the local .env file.
+    env_file:
+      - .env
+    environment:
+      # homepage already publishes :3000 on the host, so serve the dashboard elsewhere.
+      - HOST=0.0.0.0
+      - PORT=8201
+    # Let Watchtower auto-update this container when a new :latest is pushed.
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"

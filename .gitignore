@@ -1,1 +1,4 @@
 homelab.code-workspace
+
+# Local secrets (per-service)
+.env
