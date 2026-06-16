@@ -3,8 +3,9 @@ services:
     image: philippspinnler/dashboard:latest
     container_name: dashboard
     restart: unless-stopped
-    # Host networking so the Sonos widget can discover speakers via SSDP/multicast
-    # (same reason the old dashboard-api used it).
+    # Host networking binds the dashboard directly on the host at :8201 (see PORT).
+    # (Previously also required so the Sonos widget could discover speakers via
+    # SSDP/multicast — Sonos now goes through Home Assistant, so that's no longer needed.)
     network_mode: host
     # All config is provided by Portainer's stack environment variables.
     # In Portainer use "Load variables from .env file" to bulk-import .env.example,
@@ -48,8 +49,10 @@ services:
       - NUXT_NETATMO_INDOOR_CO2_ENTITY=${NUXT_NETATMO_INDOOR_CO2_ENTITY}
       - NUXT_NETATMO_OUTDOOR_TEMPERATURE_ENTITY=${NUXT_NETATMO_OUTDOOR_TEMPERATURE_ENTITY}
 
-      # --- Sonos ---
-      - NUXT_SONOS_DEVICES=${NUXT_SONOS_DEVICES}
+      # --- Sonos now-playing overlay (via Home Assistant media_player entities) ---
+      - NUXT_SONOS_MEDIA_PLAYERS=${NUXT_SONOS_MEDIA_PLAYERS}
+      - NUXT_PUBLIC_SONOS_OVERLAY_ENABLED=${NUXT_PUBLIC_SONOS_OVERLAY_ENABLED}
+      - NUXT_PUBLIC_SONOS_OVERLAY_POSITION=${NUXT_PUBLIC_SONOS_OVERLAY_POSITION}
 
       # --- Calendars / transport / speedtest / cars (JSON) ---
       - NUXT_CALENDARS_JSON=${NUXT_CALENDARS_JSON}
