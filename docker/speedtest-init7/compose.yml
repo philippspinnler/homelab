@@ -12,8 +12,10 @@ services:
         environment:
             - IPERF_HOST=speedtest.init7.net
             - IPERF_PORT=5202
-            - IPERF_PARALLEL=16
-            - IPERF_DURATION=5
+            # IPERF_PARALLEL defaults to the VM's vCPU count (best accuracy with
+            # iperf3 >=3.16). Don't pin it above the vCPU count or threads thrash.
+            - IPERF_DURATION=10
+            - IPERF_OMIT=2
             - INTERVAL_SECONDS=3600
             - HTTP_PORT=8089
         volumes:
