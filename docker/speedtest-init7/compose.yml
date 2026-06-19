@@ -12,8 +12,9 @@ services:
         environment:
             - IPERF_HOST=speedtest.init7.net
             - IPERF_PORT=5202
-            # IPERF_PARALLEL defaults to the VM's vCPU count (best accuracy with
-            # iperf3 >=3.16). Don't pin it above the vCPU count or threads thrash.
+            # IPERF_PARALLEL defaults to 16 — the internet path rate-limits each TCP
+            # flow, so many streams are needed to fill 10G. If runs log ~100% CPU,
+            # give this VM more vCPUs (don't lower the stream count).
             - IPERF_DURATION=10
             - IPERF_OMIT=2
             - INTERVAL_SECONDS=3600
