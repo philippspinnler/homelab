@@ -1,0 +1,31 @@
+services:
+    speedtest-init7:
+        # Custom iperf3 collector (see the separate iperf-speedtest repo). Build &
+        # push it to this tag first: docker build -t philippspinnler/iperf-speedtest .
+        image: philippspinnler/iperf-speedtest:latest
+        container_name: speedtest-init7
+        # Host networking: iperf3 needs the host's network stack directly — Docker's
+        # bridge NAT adds overhead that caps throughput on fast fiber. Binds the
+        # collector on the host at :8089 (HTTP_PORT); point the dashboard's
+        # NUXT_SPEEDTESTS_JSON at http://<host>:8089.
+        network_mode: host
+        environment:
+            - IPERF_HOST=speedtest.init7.net
+            - IPERF_PORT=5202
+            - IPERF_PARALLEL=16
+            - IPERF_DURATION=5
+            - INTERVAL_SECONDS=3600
+            - HTTP_PORT=8089
+        volumes:
+            - data:/data
+        restart: unless-stopped
+        # Let Watchtower auto-update this container when a new :latest is pushed.
+        labels:
+          - "com.centurylinklabs.watchtower.enable=true"
+
+volumes:
+  data:
+    driver_opts:
+      type: "nfs"
+      o: "addr=10.0.86.10,nfsvers=3,nolock,hard,rw"
+      device: ":/var/nfs/shared/Docker/speedtest-init7/data"
