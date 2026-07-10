@@ -54,7 +54,7 @@ services:
       - NUXT_PUBLIC_SONOS_OVERLAY_ENABLED=${NUXT_PUBLIC_SONOS_OVERLAY_ENABLED}
       - NUXT_PUBLIC_SONOS_OVERLAY_POSITION=${NUXT_PUBLIC_SONOS_OVERLAY_POSITION}
 
-      # --- Warnings overlay (low batteries + HA device_class:problem sensors + watchlist) ---
+      # --- Warnings overlay (low batteries + HA device_class:problem sensors + watchlist + maintenance) ---
       - NUXT_BATTERY_THRESHOLD=${NUXT_BATTERY_THRESHOLD}
       - NUXT_WARNINGS_PROBLEM_EXCLUDE=${NUXT_WARNINGS_PROBLEM_EXCLUDE}
       - NUXT_WARNINGS_LABELS_JSON=${NUXT_WARNINGS_LABELS_JSON}
@@ -63,6 +63,10 @@ services:
       - NUXT_PUBLIC_WARNINGS_OVERLAY_POSITION=${NUXT_PUBLIC_WARNINGS_OVERLAY_POSITION}
       - NUXT_HUMIDITY_THRESHOLD=${NUXT_HUMIDITY_THRESHOLD}
       - NUXT_HUMIDITY_EXCLUDE=${NUXT_HUMIDITY_EXCLUDE}
+      # Vacuum consumable maintenance reminders (filter/brushes/sensors/strainer
+      # near 0h). Empty keeps the built-in defaults from server/api/warnings.get.ts.
+      - NUXT_MAINTENANCE_THRESHOLD=${NUXT_MAINTENANCE_THRESHOLD}
+      - NUXT_WARNINGS_MAINTENANCE_JSON=${NUXT_WARNINGS_MAINTENANCE_JSON}
 
       # --- Calendars / transport / speedtest / cars (JSON) ---
       - NUXT_CALENDARS_JSON=${NUXT_CALENDARS_JSON}
