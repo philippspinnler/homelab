@@ -62,7 +62,9 @@ services:
       - NUXT_PUBLIC_WARNINGS_OVERLAY_ENABLED=${NUXT_PUBLIC_WARNINGS_OVERLAY_ENABLED}
       - NUXT_PUBLIC_WARNINGS_OVERLAY_POSITION=${NUXT_PUBLIC_WARNINGS_OVERLAY_POSITION}
       - NUXT_HUMIDITY_THRESHOLD=${NUXT_HUMIDITY_THRESHOLD}
-      - NUXT_HUMIDITY_EXCLUDE=${NUXT_HUMIDITY_EXCLUDE}
+      # Skip the outdoor sensor and the Stiebel ISG "Humidity HK 2" sensor (it is
+      # device_class:humidity in the Technikraum area and duplicated that room's row).
+      - NUXT_HUMIDITY_EXCLUDE=${NUXT_HUMIDITY_EXCLUDE:-sensor.terrasse_netatmo_terrasse_humidity,sensor.stiebel_eltron_isg_humidity_hk_2}
       # Vacuum consumable maintenance reminders (filter/brushes/sensors/strainer
       # near 0h). Empty keeps the built-in defaults from server/api/warnings.get.ts.
       - NUXT_MAINTENANCE_THRESHOLD=${NUXT_MAINTENANCE_THRESHOLD}
